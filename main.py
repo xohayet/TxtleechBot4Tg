@@ -20,6 +20,7 @@ import aiohttp
 import asyncio
 import aiofiles
 from pyrogram.types import User, Message
+from vars import API_ID, API_HASH, BOT_TOKEN
 import re
 import os
 import io
@@ -95,6 +96,16 @@ async def shell(client, message: Message):
 async def account_login_start(bot: Client, m: Message):
     await m.reply_text("**Hi Press**\n**Text** = /upload\n**Top** = /pro_top\n**Vision** = /pro_vision\n**Jw** = /pro_jw\n**Olive** = /pro_olive\n**Addapdf** = /adda_pdf")
 
+@bot.on_message(filters.command(["start"]))
+async def account_login_start(bot: Client, m: Message):
+    button = [[
+        InlineKeyboardButton("🤖 ᴜᴘᴅᴀᴛᴇ", url="https://t.me/VJ_Botz"),
+        InlineKeyboardButton("🔍 sᴜᴘᴘᴏʀᴛ", url="https://t.me/VJ_Bot_Disscussion")
+    ],[
+        InlineKeyboardButton("👨‍💻 ᴅᴇᴠᴇʟᴏᴘᴇʀ 👨‍💻", url="https://t.me/KingVJ01")
+    ]]
+    await bot.send_message(chat_id=m.from_user.id, text=f"<b>Hello {m.from_user.mention} 👋</b>\n\n I Am A Bot For Download Links From Your **.TXT** File And Then Upload That File On Telegram So Basically If You Want To Use Me First Send Me /upload Command And Then Follow The Few Steps.. And Cancel Task By - /cancel\nKnow More By /help\n\n<b>Powered By : @VJ_Botz</b>", reply_markup=InlineKeyboardMarkup(button))
+    
 
 @bot.on_message(filters.command(["cancel"]))
 async def cancel(_, m):
